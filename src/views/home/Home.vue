@@ -3,7 +3,7 @@
     <nav-bar class="home-nav">
       <div slot="centent">购物街</div>
     </nav-bar>
-    <home-swiper :banners='HomeMultiList'/>
+    <home-swiper :banners='banners'/>
     <recommend-view :recommends='recommends'/>
   </div>
 </template>
@@ -22,7 +22,7 @@
     },
     data(){
       return{
-        HomeMultiList:[],
+        banners:[],
         recommends:[]
       }
     },
@@ -32,9 +32,8 @@
     methods:{
       getHomeMultiList(){
         getHomeMultidata().then(res=>{
-          this.HomeMultiList=res.data.banner.list;
+          this.banners=res.data.banner.list;
           this.recommends = res.data.recommend.list;
-          console.log(this.HomeMultiList);
         })
       }
     }
