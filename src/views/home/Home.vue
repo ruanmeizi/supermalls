@@ -3,24 +3,24 @@
     <nav-bar class="home-nav">
       <div slot="centent">购物街</div>
     </nav-bar>
-    <swiper>
+    <home-swiper :banners='HomeMultiList'/>
+    <!-- <swiper>
       <swiper-item v-for="item in HomeMultiList" :key="item.title">
         <a :href="item.link"><img :src="item.image" alt=""></a>
       </swiper-item>
-    </swiper>
+    </swiper> -->
   </div>
 </template>
 
 <script>
   import NavBar from 'components/common/navbar/NavBar'
   import { getHomeMultidata } from "network/home"
-  import {Swiper,SwiperItem} from 'components/common/swiper'
+  import HomeSwiper from './childComps/HomeSwiper'
   export default {
     name:'Home',
     components:{
       NavBar,
-      Swiper,
-      SwiperItem
+      HomeSwiper
     },
     data(){
       return{
