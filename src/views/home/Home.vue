@@ -32,6 +32,7 @@
     methods:{
       getHomeMultiList(){
         getHomeMultidata().then(res=>{
+          console.log('数据',res.data);
           this.banners=res.data.banner.list;
           this.recommends = res.data.recommend.list;
         })
