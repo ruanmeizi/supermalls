@@ -4,11 +4,7 @@
       <div slot="centent">购物街</div>
     </nav-bar>
     <home-swiper :banners='HomeMultiList'/>
-    <!-- <swiper>
-      <swiper-item v-for="item in HomeMultiList" :key="item.title">
-        <a :href="item.link"><img :src="item.image" alt=""></a>
-      </swiper-item>
-    </swiper> -->
+    <recommend-view :recommends='recommends'/>
   </div>
 </template>
 
@@ -16,15 +12,18 @@
   import NavBar from 'components/common/navbar/NavBar'
   import { getHomeMultidata } from "network/home"
   import HomeSwiper from './childComps/HomeSwiper'
+  import RecommendView from './childComps/RecommendView'
   export default {
     name:'Home',
     components:{
       NavBar,
-      HomeSwiper
+      HomeSwiper,
+      RecommendView
     },
     data(){
       return{
         HomeMultiList:[],
+        recommends:[]
       }
     },
     created(){
@@ -34,6 +33,7 @@
       getHomeMultiList(){
         getHomeMultidata().then(res=>{
           this.HomeMultiList=res.data.banner.list;
+          this.recommends = res.data.recommend.list;
           console.log(this.HomeMultiList);
         })
       }
