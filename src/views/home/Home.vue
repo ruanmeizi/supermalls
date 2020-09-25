@@ -56,7 +56,7 @@
   import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl'
 
-  import { getHomeMultidata } from "network/home"
+  import { getHomeMultidata , getHomeGoods} from "network/home"
   export default {
     name:'Home',
     components:{
@@ -75,6 +75,7 @@
     },
     created(){
       this.getHomeMultiList();
+      this.getHomeGoodsList();
     },
     methods:{
       getHomeMultiList(){
@@ -82,6 +83,11 @@
           console.log('数据',res.data);
           this.banners=res.data.banner.list;
           this.recommends = res.data.recommend.list;
+        })
+      },
+      getHomeGoodsList(){
+        getHomeGoods('pop',1).then(res=>{
+          console.log(res);
         })
       }
     }
