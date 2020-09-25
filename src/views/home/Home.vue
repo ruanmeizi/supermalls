@@ -6,27 +6,71 @@
     <home-swiper :banners='banners'/>
     <recommend-view :recommends='recommends'/>
     <feature-view></feature-view>
+    <tab-control :titles="titles" class="tab-control"></tab-control>
+    <ul>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+      <li>heiheihei</li>
+    </ul>
   </div>
 </template>
 
 <script>
-  import NavBar from 'components/common/navbar/NavBar'
-  import { getHomeMultidata } from "network/home"
   import HomeSwiper from './childComps/HomeSwiper'
   import RecommendView from './childComps/RecommendView'
   import FeatureView from './childComps/FeatureView'
+
+  import NavBar from 'components/common/navbar/NavBar'
+  import TabControl from 'components/content/tabControl/TabControl'
+
+  import { getHomeMultidata } from "network/home"
   export default {
     name:'Home',
     components:{
-      NavBar,
       HomeSwiper,
       RecommendView,
-      FeatureView
+      FeatureView,
+      NavBar,
+      TabControl
     },
     data(){
       return{
         banners:[],
-        recommends:[]
+        recommends:[],
+        titles:['流行','新款','精选']
       }
     },
     created(){
@@ -57,5 +101,9 @@
     left: 0;
     right: 0;
     z-index: 10;
+  }
+  .tab-control{
+    position: sticky;
+    top:44px;
   }
 </style>
