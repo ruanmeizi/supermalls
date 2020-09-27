@@ -7,44 +7,7 @@
     <recommend-view :recommends='recommends'/>
     <feature-view></feature-view>
     <tab-control :titles="titles" class="tab-control"></tab-control>
-    <ul>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-      <li>heiheihei</li>
-    </ul>
+    <good-list :goods="goods['pop'].list"/>
   </div>
 </template>
 
@@ -55,6 +18,7 @@
 
   import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl'
+  import GoodList from "components/content/goods/GoodsList"
 
 
   import { getHomeMultidata , getHomeGoods} from "network/home"
@@ -65,14 +29,14 @@
       RecommendView,
       FeatureView,
       NavBar,
-      TabControl
+      TabControl,
+      GoodList
     },
     data(){
       return{
         banners:[],
         recommends:[],
         titles:['流行','新款','精选'],
-
         goods:{
           "pop":{
             page:0,
