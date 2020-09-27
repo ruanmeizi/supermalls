@@ -24,6 +24,7 @@ export default {
     methods:{
         itemClick(val){
             this.nowIndex=val;
+            this.$emit('tabClick',val)
         }
     }
 }
