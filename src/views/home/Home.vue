@@ -56,6 +56,7 @@
   import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl'
 
+
   import { getHomeMultidata , getHomeGoods} from "network/home"
   export default {
     name:'Home',
@@ -70,12 +71,29 @@
       return{
         banners:[],
         recommends:[],
-        titles:['流行','新款','精选']
+        titles:['流行','新款','精选'],
+
+        goods:{
+          "pop":{
+            page:0,
+            list:[],
+          },
+          'new':{
+            page:0,
+            list:[]
+            },
+          'sell':{
+            page:0,
+            list:[]
+          },
+        }
       }
     },
     created(){
       this.getHomeMultiList();
-      this.getHomeGoodsList();
+      this.getHomeGoodsList("pop");
+      this.getHomeGoodsList('new');
+      this.getHomeGoodsList('sell');
     },
     methods:{
       getHomeMultiList(){
@@ -85,9 +103,14 @@
           this.recommends = res.data.recommend.list;
         })
       },
-      getHomeGoodsList(){
-        getHomeGoods('pop',1).then(res=>{
+      getHomeGoodsList(type){
+        const page =this.goods[type].page+1;
+        getHomeGoods(type,page).then(res=>{
           console.log(res);
+
+          this.goods[type].list.push(...res.data.list);
+          this.goods[type].page+=1;
+          console.log('goods数据',this.goods)
         })
       }
     }
