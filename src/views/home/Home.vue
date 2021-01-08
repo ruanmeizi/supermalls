@@ -3,11 +3,17 @@
     <nav-bar class="home-nav">
       <div slot="centent">购物街</div>
     </nav-bar>
-    <home-swiper :banners='banners'/>
-    <recommend-view :recommends='recommends'/>
-    <feature-view></feature-view>
-    <tab-control :titles="titles" class="tab-control" @tabClick='tabClick'></tab-control>
-    <good-list :goods="showGoods"/>
+    
+    <scroll class="content">
+      <home-swiper :banners='banners'/>
+      <recommend-view :recommends='recommends'/>
+      <feature-view></feature-view>
+      <tab-control :titles="titles" class="tab-control" @tabClick='tabClick'></tab-control>
+      <good-list :goods="showGoods"/>
+    </scroll>
+    <ul>
+      <li>1111111</li>
+    </ul>
   </div>
 </template>
 
@@ -19,6 +25,7 @@
   import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl'
   import GoodList from "components/content/goods/GoodsList"
+   import Scroll from 'components/common/scroll/Scroll'
 
 
   import { getHomeMultidata , getHomeGoods} from "network/home"
@@ -30,7 +37,8 @@
       FeatureView,
       NavBar,
       TabControl,
-      GoodList
+      GoodList,
+      Scroll
     },
     data(){
       return{
@@ -107,6 +115,8 @@
 <style scoped>
   #home{
     padding-top:44px;
+    height: 100vh;
+    position: relative;
   }
   .home-nav{
     background-color: var(--color-tint);
@@ -121,5 +131,13 @@
   .tab-control{
     position: sticky;
     top:44px;
+  }
+  .content{
+    overflow: hidden;
+    position: absolute;
+    top:44px;
+    bottom:49px;
+    left: 0;
+    right: 0;
   }
 </style>
