@@ -4,16 +4,14 @@
       <div slot="centent">购物街</div>
     </nav-bar>
     
-    <scroll class="content">
+    <scroll class="content" ref="scroll">
       <home-swiper :banners='banners'/>
       <recommend-view :recommends='recommends'/>
       <feature-view></feature-view>
       <tab-control :titles="titles" class="tab-control" @tabClick='tabClick'></tab-control>
       <good-list :goods="showGoods"/>
     </scroll>
-    <ul>
-      <li>1111111</li>
-    </ul>
+    <back-top @click.native="backClick"></back-top>
   </div>
 </template>
 
@@ -25,7 +23,8 @@
   import NavBar from 'components/common/navbar/NavBar'
   import TabControl from 'components/content/tabControl/TabControl'
   import GoodList from "components/content/goods/GoodsList"
-   import Scroll from 'components/common/scroll/Scroll'
+  import Scroll from 'components/common/scroll/Scroll'
+  import BackTop from "components/content/backTop/BackTop"
 
 
   import { getHomeMultidata , getHomeGoods} from "network/home"
@@ -38,7 +37,8 @@
       NavBar,
       TabControl,
       GoodList,
-      Scroll
+      Scroll,
+      BackTop
     },
     data(){
       return{
@@ -89,6 +89,10 @@
             this.currentType='sell';
             break;
         }
+      },
+      backClick(){
+          //this.$refs.scroll.scroll.scrollTo(0,0,500)
+          this.$refs.scroll.scrollTo(0,0,)
       },
       /**
        *  网络请求相关的方法
